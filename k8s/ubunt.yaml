@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu
+spec:
+  containers:
+    - name: ubuntu
+      image: ubuntu
+      command:
+        - sleep
+        - infinity
+      env:
+        - name: FIRST_NAME
+          valueFrom:
+            secretKeyRef:
+              name: demo-secret
+              key: name
+        - name: MY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: demo-secret
+              key: password
